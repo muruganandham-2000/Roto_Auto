@@ -1,0 +1,55 @@
+def Db_Connection(self):
+      conn=db.connect(host='localhost',user='root',password='Muruga@2000')
+      if conn.is_connected():
+         print("DB Connected...")
+      else:
+         print("connection not established...")
+      cursor=conn.cursor()
+      cursor.execute("SELECT * FROM pydatabase.py_automate where Run_Indicator='Y';")
+      res = cursor.fetchall()
+      record = pd.DataFrame(res)
+      Scenario,F_Name,L_Name,Email,Comment = ([] for i in range(5))
+      for i in range (len(record)):
+         Scenario.append(record[0][i])
+         F_Name.append(record[2][i])
+         L_Name.append(record[3][i])
+         Email.append(record[4][i])
+         Comment.append(record[5][i])
+      mydict={"SCENARIO":Scenario,"F_NAME":F_Name,"L_NAME":L_Name,"EMAIL":Email,"COMMENT":Comment}
+      cursor.close()
+      conn.close()
+      return mydict
+
+
+ff=pd.DataFrame(rrr)
+         rr1=[rrr,record]
+         pss1=pd.concat(rr1)
+         for rrr in record.columns:
+            dict[rrr] = record[rrr].tolist()
+
+
+
+
+def Db_Connection1(self):
+      conn=db.connect(host='localhost',user='root',password='Muruga@2000')
+      if conn.is_connected():
+         print("DB Connected...")
+         cursor=conn.cursor()
+         cursor.execute("SELECT * FROM pydatabase.py_automate where Run_Indicator='Y';")
+         res = cursor.fetchall()
+         res1=cursor.description
+         cursor.close()
+         conn.close()
+         dict = {}
+         recor=pd.DataFrame(res1)
+         record = pd.DataFrame(res)
+         rrr=recor[0]
+         sss=[]
+         for i in range (len(rrr)):
+            sss.append(rrr[i])
+         fff=[sss,record]
+         mm=pd.concat(fff)
+         
+      else:
+         print("connection not established...")
+      return mm
